@@ -6,7 +6,8 @@ var initCubeSlider = function(ops){
 				interval: 2500,
 				delay: 50,
 				transition: 500,
-				controls: false
+				controls: false,
+				quality: 2
 			}, ops)
 	
 	var size = o.size
@@ -21,12 +22,17 @@ var initCubeSlider = function(ops){
 	if(!len) return
 	len = len < 7 ? len : 6
 	
+	var quality = o.quality
+	if(quality < 1 || quality > 5){
+		quality = 2
+	}
+	
 	var imgs = []
 	var images = []
 	
 	var canvas = document.createElement('canvas')
-	canvas.height = height
-	canvas.width = width
+	canvas.height = height * quality
+	canvas.width = width * quality
 	var ctx = canvas.getContext('2d')
 	
 	var styles = [
@@ -99,11 +105,11 @@ var initCubeSlider = function(ops){
 		cube.style.transition = "transform " + (o.transition / 1000) + "s"
 		for(var i = 0; i < num; i++){
 			var side = document.createElement('canvas')
-			side.height = size
-			side.width = size
+			side.height = size * quality
+			side.width = size * quality
 			var c = side.getContext('2d')
 			c.putImageData(imgs[i][index], 0, 0)
-			if(size !== 100){
+			if(size !== 100 || quality !== 1){
 				side.style.transform = styles[i][0] + (size / 2) + styles[i][1]
 			}
 			side.classList.add('side')
@@ -129,11 +135,11 @@ var initCubeSlider = function(ops){
 	}
 	
 	var draw = function(img, i){
-		ctx.drawImage(img, 0, 0, width, height)
+		ctx.drawImage(img, 0, 0, width * quality, height * quality)
 		var sides = []
 		for(var i = 0; i < o.row; i++){
 			for(var j = 0; j < o.col; j++){
-				sides.push(ctx.getImageData(size * j, size * i, size, size))
+				sides.push(ctx.getImageData(size * j * quality, size * i * quality, size * quality, size * quality))
 			}
 		}
 		imgs.push(sides)
