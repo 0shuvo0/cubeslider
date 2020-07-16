@@ -42,20 +42,20 @@ var initCubeSlider = function(ops){
 	var render = undefined
 	var showNext = function(){
 		count++
-		var prev = count === 1 ? 6 : count - 1
-		el.classList.remove("slide-" + prev)
-		el.classList.add("slide-" + count)
 		if(count > len){
 			count = 1
 		}
+		var prev = count === 1 ? len : count - 1
+		el.classList.remove("slide-" + prev)
+		el.classList.add("slide-" + count)
 	}
 	var showPrev = function(){
-		var prev = count === 1 ? 6 : count - 1
+		var prev = count === 1 ? len : count - 1
 		el.classList.remove("slide-" + count)
 		el.classList.add("slide-" + prev)
 		count--
 		if(count < 1){
-			count = 6
+			count = len
 		}
 	}
 	var runSlider = function(){
@@ -70,6 +70,7 @@ var initCubeSlider = function(ops){
 		lctrl.classList.add('ctrl')
 		lctrl.classList.add('left')
 		lctrl.addEventListener('click', function(){
+			if(len === 1) return
 			clearInterval(render)
 			showPrev()
 			render = setInterval(showNext, o.interval)
@@ -80,6 +81,7 @@ var initCubeSlider = function(ops){
 		rctrl.classList.add('ctrl')
 		rctrl.classList.add('right')
 		rctrl.addEventListener('click', function(){
+			if(len === 1) return
 			clearInterval(render)
 			showNext()
 			render = setInterval(showNext, o.interval)
@@ -116,6 +118,8 @@ var initCubeSlider = function(ops){
 			cube.style.transitionDelay = (i * (o.delay / 1000)) + "s"
 			el.appendChild(cube)
 		}
+		imgs = undefined
+		images = undefined
 		if(o.controls){
 			addControls()
 		}
