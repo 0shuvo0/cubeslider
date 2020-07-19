@@ -1,0 +1,30 @@
+{
+  "name": "cubeslider",
+  "version": "2.0.0",
+  "description": "CubeSlider is a javascript library to easily create 3D cube based image slider",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0shuvo0/cubeslider.git"
+  },
+  "keywords": [
+    "cubeslider",
+    "carousel",
+    "image",
+    "slider",
+    "JavaScript",
+    "css",
+    "cube",
+    "3d",
+    "animation"
+  ],
+  "author": "Md Shuvo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/0shuvo0/cubeslider/issues"
+  },
+  "homepage": "https://github.com/0shuvo0/cubeslider#readme"
+}

@@ -12,6 +12,8 @@
 	position: absolute;
 	top: 0;
 	left: 0;
+	background-color: #fff;
+	background-repeat: no-repeat;
 }
 .cube .side:nth-child(1){
 	transform: translateZ(50px);
@@ -97,5 +99,5 @@
 }
 .cube-slider .ctrl-panel .ctrl.right{
 	transform: rotate(135deg);
-	margin-left: 20px;
+	margin-left: 20%;
 }
