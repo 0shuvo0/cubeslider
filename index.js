@@ -1,5 +1,4 @@
 const initCubeSlider = (ops) => {
-	var n = 5 / 0
 	var o = Object.assign({
 				row: 2,
 				col: 3,
@@ -10,13 +9,31 @@ const initCubeSlider = (ops) => {
 				transition: 500,
 				controls: false
 			}, ops)
+	var el = document.querySelector(o.el)
+	var pel = el.parentNode
 	
 	var size = o.size
-	var u = o.unit
+	var u = "px"
+	
+	var parcentage = function(t, p){
+		return t * (p / 100)
+	}
+	if(o.unit === "%"){
+		var ps = (pel && pel.clientWidth) || window.innerWidth
+		el.style.fontSize = parcentage(ps, o.size) + "px"
+		size = 1
+		u = "em"
+		window.addEventListener('resize', function(){
+			ps = (pel && pel.clientWidth) || window.innerWidth
+			el.style.fontSize = parcentage(ps, o.size) + "px"
+		})
+	}else{
+		u = o.unit
+	}
+	
 	var height = o.row * size
 	var width = o.col * size
 	
-	var el = document.querySelector(o.el)
 	el.style.height = height + u
 	el.style.width = width + u
 	

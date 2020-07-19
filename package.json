@@ -1,6 +1,6 @@
 {
   "name": "cubeslider",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "CubeSlider is a javascript library to easily create 3D cube based image slider",
   "main": "index.js",
   "scripts": {
